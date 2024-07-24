@@ -1,4 +1,4 @@
-import { MainPage } from './pages/MainPage';
+import { MainPage } from './pages/mainPage';
 import { offers } from './mocks/offers';
 
 export const App = (): JSX.Element => {
