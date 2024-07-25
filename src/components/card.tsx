@@ -13,9 +13,8 @@ const classIncluded = (classNames: { [key: string]: boolean }) => {
 
 const getRating = (value: number): string => String((100 * value) / 5);
 
-export const Card = ({ offer }: CardProps) => {
+export const Card = ({ offer }: CardProps): JSX.Element => {
   console.log('render card');
-
   return (
     <article className="cities__card place-card">
       {offer.isPremium && (

@@ -1,4 +1,11 @@
-export const OfferPage = () => {
+// import { Offer } from '../types/Offer';
+import { Link } from 'react-router-dom';
+
+// type OfferProps = {
+//   offer: Offer;
+// };
+
+export const OfferPage = (): JSX.Element => {
   console.log('render OfferPage');
   return (
     <div className="page">
@@ -6,7 +13,7 @@ export const OfferPage = () => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
+              <Link className="header__logo-link" to="/">
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -14,7 +21,7 @@ export const OfferPage = () => {
                   width="81"
                   height="41"
                 />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -200,7 +207,7 @@ export const OfferPage = () => {
                         by the unique lightness of Amsterdam. The building is
                         green and from 18th century.
                       </p>
-                      <time className="reviews__time" datetime="2019-04-24">
+                      <time className="reviews__time" dateTime="2019-04-24">
                         April 2019
                       </time>
                     </div>
@@ -304,7 +311,7 @@ export const OfferPage = () => {
                     id="review"
                     name="review"
                     placeholder="Tell how was your stay, what you like and what can be improved"
-                  ></textarea>
+                  />
                   <div className="reviews__button-wrapper">
                     <p className="reviews__help">
                       To submit review please make sure to set{' '}

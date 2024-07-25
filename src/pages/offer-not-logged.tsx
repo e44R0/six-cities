@@ -1,4 +1,6 @@
-export const OfferNotLoggedPage = () => {
+import { Link } from 'react-router-dom';
+
+export const OfferNotLoggedPage = (): JSX.Element => {
   console.log('render OfferNotLoggedPage');
   return (
     <div className="page">
@@ -6,7 +8,7 @@ export const OfferNotLoggedPage = () => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
+              <Link className="header__logo-link" to="/">
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -14,7 +16,7 @@ export const OfferNotLoggedPage = () => {
                   width="81"
                   height="41"
                 />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -192,7 +194,7 @@ export const OfferNotLoggedPage = () => {
                         by the unique lightness of Amsterdam. The building is
                         green and from 18th century.
                       </p>
-                      <time className="reviews__time" datetime="2019-04-24">
+                      <time className="reviews__time" dateTime="2019-04-24">
                         April 2019
                       </time>
                     </div>

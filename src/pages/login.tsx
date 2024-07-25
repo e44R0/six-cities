@@ -1,4 +1,6 @@
-export const LoginPage = () => {
+import { Link } from 'react-router-dom';
+
+export const LoginPage = (): JSX.Element => {
   console.log('render Login');
   return (
     <div className="page page--gray page--login">
@@ -55,9 +57,9 @@ export const LoginPage = () => {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to="/">
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>

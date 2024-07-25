@@ -1,4 +1,4 @@
-export const FavoritesPage = () => {
+export const FavoritesPage = (): JSX.Element => {
   console.log('render Favorites');
   return (
     <div className="page">

@@ -1,4 +1,4 @@
-export const FavoritesEmptyPage = () => {
+export const FavoritesEmptyPage = (): JSX.Element => {
   console.log('render FavoritesEmpty');
   return (
     <div className="page page--favorites-empty">

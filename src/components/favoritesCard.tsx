@@ -1,5 +1,6 @@
-export const favoriteCard = () => {
-  console.log('render favoritesCdard');
+export const FavoriteCard = (): JSX.Element => {
+  //eslint-disable-next-line no-console
+  console.log('render FavoritesCdard');
   return (
     <article className="favorites__card place-card">
       <div className="place-card__mark">

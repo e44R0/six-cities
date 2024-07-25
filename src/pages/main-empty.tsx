@@ -1,5 +1,5 @@
-export const MainEmpty = () => {
-  console.log('render MminEmpty');
+export const MainEmpty = (): JSX.Element => {
+  console.log('render MainEmpty');
   return (
     <div className="page page--gray page--main">
       <header className="header">
