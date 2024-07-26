@@ -4,15 +4,17 @@ type CardProps = {
   offer: Offer;
 };
 
-const cx = (classNames: { [key: string]: boolean }) => {
-  // Object.keys
-  // [].join(' ')
-  return '... ... ...';
+const classIncluded = (classNames: { [key: string]: boolean }) => {
+  const classReturned: string[] = Object.keys(classNames).filter(
+    (key: string) => classNames[key] === true,
+  );
+  return classReturned.join(' ');
 };
 
-export const Card = ({ offer }: CardProps) => {
-  console.log('render card');
+const getRating = (value: number): string => String((100 * value) / 5);
 
+export const Card = ({ offer }: CardProps): JSX.Element => {
+  console.log('render card');
   return (
     <article className="cities__card place-card">
       {offer.isPremium && (
@@ -38,12 +40,11 @@ export const Card = ({ offer }: CardProps) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className={`place-card__bookmark-button ${offer.isFavorite ? 'place-card__bookmark-button--active' : ''} button`}
-            // className={cx({
-            //   'place-card__bookmark-button': true,
-            //   button: true,
-            //   'place-card__bookmark-button--active': offer.isFavorite,
-            // })}
+            className={classIncluded({
+              'place-card__bookmark-button': true,
+              button: true,
+              'place-card__bookmark-button--active': offer.isFavorite,
+            })}
             type="button"
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -54,7 +55,7 @@ export const Card = ({ offer }: CardProps) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
+            <span style={{ width: `${getRating(offer.rating)}%` }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
