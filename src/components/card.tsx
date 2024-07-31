@@ -1,17 +1,9 @@
 import { Offer } from '../types/Offer';
+import { getRating, classIncluded } from '../utils';
 
 type CardProps = {
   offer: Offer;
 };
-
-const classIncluded = (classNames: { [key: string]: boolean }) => {
-  const classReturned: string[] = Object.keys(classNames).filter(
-    (key: string) => classNames[key] === true,
-  );
-  return classReturned.join(' ');
-};
-
-const getRating = (value: number): string => String((100 * value) / 5);
 
 export const Card = ({ offer }: CardProps): JSX.Element => {
   console.log('render card');
