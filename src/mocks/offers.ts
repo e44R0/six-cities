@@ -2759,8 +2759,10 @@ export const offers: Offer[] = [
       longitude: 6.784314,
       zoom: 16,
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 2.9,
   },
 ];
+
+// export const favoriteOffers = offers.filter();

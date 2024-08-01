@@ -1,8 +1,8 @@
 import { OffersListEmpty } from '../components/offers/offers-list-empty';
-import { HeaderWhithNavigation } from '../components/header/header-with-navigation';
 import { OfferList } from '../components/offers/offers-list';
 import { Offer } from '../types/Offer';
 import { classIncluded } from '../utils';
+import { Header } from '../components/header/header';
 
 type MainPageProps = {
   offers: Offer[];
@@ -12,11 +12,12 @@ export const MainPage = ({ offers }: MainPageProps) => {
   console.log('render MainPage');
   return (
     <div className="page page--gray page--main">
-      <HeaderWhithNavigation />
+      <Header />
 
       <main
         className={classIncluded({
-          page__main: true,
+          // prettier-ignore
+          'page__main': true,
           'page__main--index': true,
           'page__main--index-empty': offers.length === 0,
         })}

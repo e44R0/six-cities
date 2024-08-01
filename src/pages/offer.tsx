@@ -1,57 +1,22 @@
-import { HeaderWhithNavigation } from '../components/header/header-with-navigation';
+import { Header } from '../components/header/header';
+import { OfferPhoto } from '../components/offers/offer-photo';
 
 export const OfferPage = (): JSX.Element => {
   console.log('render OfferPage');
   return (
     <div className="page">
-      <HeaderWhithNavigation />
+      <Header />
 
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/room.jpg"
-                  alt="Photo studio"
-                />
-              </div>
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/apartment-01.jpg"
-                  alt="Photo studio"
-                />
-              </div>
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/apartment-02.jpg"
-                  alt="Photo studio"
-                />
-              </div>
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/apartment-03.jpg"
-                  alt="Photo studio"
-                />
-              </div>
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/studio-01.jpg"
-                  alt="Photo studio"
-                />
-              </div>
-              <div className="offer__image-wrapper">
-                <img
-                  className="offer__image"
-                  src="img/apartment-01.jpg"
-                  alt="Photo studio"
-                />
-              </div>
+              <OfferPhoto />
+              <OfferPhoto />
+              <OfferPhoto />
+              <OfferPhoto />
+              <OfferPhoto />
+              <OfferPhoto />
             </div>
           </div>
           <div className="offer__container container">

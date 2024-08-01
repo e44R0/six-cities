@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
+import { AuthorizationStatus, Settings } from '../../const';
+import { HeaderNavigationAuthorized } from './header-authorized';
+import { HeaderNavigationNotAuthorized } from './header-not-authorized';
 
-export const Header = (): JSX.Element => {
+interface HeaderProps {
+  withoutNav?: boolean;
+}
+
+export const Header = ({ withoutNav }: HeaderProps): JSX.Element => {
   console.log('render PageHeader');
   return (
     <header className="header">
@@ -17,6 +24,12 @@ export const Header = (): JSX.Element => {
               />
             </Link>
           </div>
+          {!withoutNav &&
+            (Settings.authorizationStatus === AuthorizationStatus.Auth ? (
+              <HeaderNavigationAuthorized />
+            ) : (
+              <HeaderNavigationNotAuthorized />
+            ))}
         </div>
       </div>
     </header>
