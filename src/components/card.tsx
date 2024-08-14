@@ -1,29 +1,38 @@
+import { Link } from 'react-router-dom';
 import { Offer } from '../types/Offer';
+import { getRating, classIncluded, createOfferLink } from '../utils';
 
 type CardProps = {
   offer: Offer;
+  onHover: (offerId: string) => void;
 };
 
-const classIncluded = (classNames: { [key: string]: boolean }) => {
-  const classReturned: string[] = Object.keys(classNames).filter(
-    (key: string) => classNames[key] === true,
-  );
-  return classReturned.join(' ');
-};
+export const Card = ({ offer, onHover }: CardProps): JSX.Element => {
+  // console.log('render card');
 
-const getRating = (value: number): string => String((100 * value) / 5);
+  const mouseOverHandler = () => {
+    onHover(offer.id);
+    // console.log('MouseOver >>', offer.id);
+  };
 
-export const Card = ({ offer }: CardProps): JSX.Element => {
-  console.log('render card');
+  const mouseOutHandler = () => {
+    // console.log('mouse out');
+    onHover('');
+  };
+
   return (
-    <article className="cities__card place-card">
+    <article
+      className="cities__card place-card"
+      onMouseOver={mouseOverHandler}
+      onMouseOut={mouseOutHandler}
+    >
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={createOfferLink(offer.id)}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -31,7 +40,7 @@ export const Card = ({ offer }: CardProps): JSX.Element => {
             height="200"
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -60,7 +69,7 @@ export const Card = ({ offer }: CardProps): JSX.Element => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={createOfferLink(offer.id)}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

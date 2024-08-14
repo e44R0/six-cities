@@ -1,5 +1,7 @@
 import { Offer } from '../types/Offer';
 
+export const offers2: Offer[] = [];
+
 export const offers: Offer[] = [
   {
     id: '502872da-6cb4-4fee-ba4c-88506bcb0c2c',
@@ -2757,8 +2759,10 @@ export const offers: Offer[] = [
       longitude: 6.784314,
       zoom: 16,
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 2.9,
   },
 ];
+
+// export const favoriteOffers = offers.filter();

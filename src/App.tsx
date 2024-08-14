@@ -6,7 +6,7 @@ import { NotFoundPage } from './pages/page-not-found';
 import { FavoritesPage } from './pages/favorites';
 import { PrivateRoute } from './components/private-route';
 import { offers } from './mocks/offers';
-import { AppRoute, AuthorizationStatus } from './const';
+import { AppRoute, Settings } from './const';
 
 export const App = (): JSX.Element => {
   console.log('render app');
@@ -17,13 +17,13 @@ export const App = (): JSX.Element => {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+            <PrivateRoute authorizationStatus={Settings.authorizationStatus}>
               <FavoritesPage />
             </PrivateRoute>
           }
         />
         <Route path={AppRoute.Login} element={<LoginPage />} />
-        <Route path={`${AppRoute.Offer}/:id`} element={<OfferPage />} />
+        <Route path={AppRoute.Offer} element={<OfferPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
