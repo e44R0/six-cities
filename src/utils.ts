@@ -6,3 +6,5 @@ export const classIncluded = (classNames: { [key: string]: boolean }) => {
 };
 
 export const getRating = (value: number): string => String((100 * value) / 5);
+
+export const createOfferLink = (value: string): string => `/offer/${value}`;

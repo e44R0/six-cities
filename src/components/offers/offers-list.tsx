@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Offer } from '../../types/Offer';
 import { Card } from '../card';
 
@@ -6,7 +7,11 @@ type CitiesProps = {
 };
 
 export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
-  console.log('render offer list');
+  // console.log('render offer list');
+
+  const [offerId, setId] = useState('');
+  console.log('hovered offer:', offerId);
+
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -43,7 +48,7 @@ export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
           </form>
           <div className="cities__places-list places__list tabs__content">
             {offers.map((offer) => (
-              <Card key={offer.id} offer={offer} />
+              <Card key={offer.id} offer={offer} onHover={setId} />
             ))}
           </div>
         </section>
