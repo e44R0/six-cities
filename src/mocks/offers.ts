@@ -643,7 +643,7 @@ export const offers: Offer[] = [
       longitude: 6.976974,
       zoom: 16,
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 4.5,
   },

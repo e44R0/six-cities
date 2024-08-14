@@ -18,7 +18,7 @@ export const App = (): JSX.Element => {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={Settings.authorizationStatus}>
-              <FavoritesPage />
+              <FavoritesPage offers={offers} />
             </PrivateRoute>
           }
         />
