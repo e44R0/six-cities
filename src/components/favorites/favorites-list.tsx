@@ -13,6 +13,7 @@ export const FavoritesList = ({ offers }: FavoritesListProps): JSX.Element => {
   console.log('rendor favorites');
 
   const cities = offers.filter((offer) => offer.isFavorite === true);
+
   // const uniqueCities = Array.from(
   //   new Set(cities.map((offer) => offer.city.name)),
   // );
@@ -28,16 +29,6 @@ export const FavoritesList = ({ offers }: FavoritesListProps): JSX.Element => {
 
     return acc;
   }, {});
-
-  // console.log(uniqueCities);
-  // console.log(cities);
-  // console.log(cityOffers);
-
-  // Object.keys(cityOffers).forEach((cityName) => {
-  //   const offersInCity = cityOffers[cityName];
-  //   console.log(`Город: ${cityName}`);
-  //   console.log('Объявления:', offersInCity);
-  // });
 
   return (
     <main className="page__main page__main--favorites">
