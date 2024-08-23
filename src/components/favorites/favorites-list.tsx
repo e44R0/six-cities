@@ -18,6 +18,10 @@ export const FavoritesList = ({ offers }: FavoritesListProps): JSX.Element => {
   //   new Set(cities.map((offer) => offer.city.name)),
   // );
 
+  // 1. вынести в отдельую ф-ю groupOffers
+  // 2. сделать унвиверсальную ф-ю groupBy(array, selector: (item) => item.propName)
+  //    groupBy(offers, (offer) => offer.city.name);
+
   const cityOffers = cities.reduce((acc: CityOffers, offer: Offer) => {
     const cityName = offer.city.name;
     // Если город еще не добавлен в объект, создаем новый массив
@@ -36,13 +40,15 @@ export const FavoritesList = ({ offers }: FavoritesListProps): JSX.Element => {
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            {Object.keys(cityOffers).map((cityName) => (
-              <FavoritesLocationItem
-                key={cityName}
-                cityName={cityName}
-                offers={cityOffers[cityName]}
-              />
-            ))}
+            {Object.keys(cityOffers).map((cityName) => {
+              return (
+                <FavoritesLocationItem
+                  key={cityName}
+                  cityName={cityName}
+                  offers={cityOffers[cityName]}
+                />
+              );
+            })}
           </ul>
         </section>
       </div>
