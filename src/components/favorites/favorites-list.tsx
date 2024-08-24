@@ -40,15 +40,13 @@ export const FavoritesList = ({ offers }: FavoritesListProps): JSX.Element => {
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            {Object.keys(cityOffers).map((cityName) => {
-              return (
-                <FavoritesLocationItem
-                  key={cityName}
-                  cityName={cityName}
-                  offers={cityOffers[cityName]}
-                />
-              );
-            })}
+            {Object.keys(cityOffers).map((cityName) => (
+              <FavoritesLocationItem
+                key={cityName}
+                cityName={cityName}
+                offers={cityOffers[cityName]}
+              />
+            ))}
           </ul>
         </section>
       </div>

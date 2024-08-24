@@ -48,7 +48,12 @@ export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
           </form>
           <div className="cities__places-list places__list tabs__content">
             {offers.map((offer) => (
-              <Card key={offer.id} offer={offer} onHover={setId} />
+              <Card
+                key={offer.id}
+                offer={offer}
+                onHover={setId}
+                // offersList={offers}
+              />
             ))}
           </div>
         </section>

@@ -1,9 +1,23 @@
 import { ReviewForm } from '../components/review-form';
 import { Header } from '../components/header/header';
 import { OfferPhoto } from '../components/offers/offer-photo';
+import { useParams } from 'react-router-dom';
+import { Offer } from '../types/Offer';
+import { NotFoundPage } from './page-not-found';
+import { fullOffer } from '../mocks/offers';
 
-export const OfferPage = (): JSX.Element => {
-  console.log('render OfferPage');
+type OfferPageProps = {
+  offers: Offer[];
+};
+
+export const OfferPage = ({ offers }: OfferPageProps): JSX.Element => {
+  // console.log('render OfferPage');
+  const params = useParams();
+
+  const currentOffer = offers.find((offer) => offer.id === params.id);
+  if (currentOffer === undefined) {
+    return <NotFoundPage />;
+  }
   return (
     <div className="page">
       <Header />
@@ -27,7 +41,8 @@ export const OfferPage = (): JSX.Element => {
               </div>
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {fullOffer.title}
+                  {/* Beautiful &amp; luxurious studio at great location */}
                 </h1>
                 <button className="offer__bookmark-button button" type="button">
                   <svg className="offer__bookmark-icon" width="31" height="33">
@@ -55,7 +70,7 @@ export const OfferPage = (): JSX.Element => {
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">&euro;120</b>
+                <b className="offer__price-value">&euro;{currentOffer.price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">

@@ -17,11 +17,9 @@ export const Card = ({
     if (onHover) {
       onHover(offer.id);
     }
-    // console.log('MouseOver >>', offer.id);
   };
 
   const mouseOutHandler = () => {
-    // console.log('mouse out');
     onHover?.('');
   };
 
