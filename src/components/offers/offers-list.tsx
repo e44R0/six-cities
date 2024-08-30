@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Offer } from '../../types/Offer';
 import { Card } from '../card';
+import { Map } from '../map/map';
+import { city } from '../../mocks/offers';
 
 type CitiesProps = {
   offers: Offer[];
@@ -8,7 +10,6 @@ type CitiesProps = {
 
 export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
   // console.log('render offer list');
-
   const [offerId, setId] = useState('');
   console.log('hovered offer:', offerId);
 
@@ -52,9 +53,7 @@ export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
             ))}
           </div>
         </section>
-        <div className="cities__right-section">
-          <section className="cities__map map"></section>
-        </div>
+        <Map offers={offers} city={city} />
       </div>
     </div>
   );
