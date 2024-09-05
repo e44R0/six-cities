@@ -53,7 +53,7 @@ export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
             ))}
           </div>
         </section>
-        <Map offers={offers} city={city} />
+        <Map offers={offers} city={city} selectedOffer={offerId} />
       </div>
     </div>
   );
