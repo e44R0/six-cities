@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Offer } from '../../types/Offer';
 import { Card } from '../card';
 import { Map } from '../map/map';
@@ -6,9 +6,13 @@ import { city } from '../../mocks/offers';
 
 type CitiesProps = {
   offers: Offer[];
+  currentCity: string;
 };
 
-export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
+export const OfferList = ({
+  offers,
+  currentCity,
+}: CitiesProps): JSX.Element => {
   // console.log('render offer list');
   const [offerId, setId] = useState('');
   console.log('hovered offer:', offerId);
@@ -19,7 +23,7 @@ export const OfferList = ({ offers }: CitiesProps): JSX.Element => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">
-            {offers.length} places to stay in Amsterdam
+            {offers.length} places to stay in {currentCity}
           </b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>

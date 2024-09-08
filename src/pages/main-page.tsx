@@ -1,15 +1,19 @@
 import { OffersListEmpty } from '../components/offers/offers-list-empty';
 import { OfferList } from '../components/offers/offers-list';
 import { Offer } from '../types/Offer';
-import { classIncluded } from '../utils';
+import { classIncluded, getCurrentCityOffers } from '../utils';
 import { Header } from '../components/header/header';
+import { Cities } from '../const';
+import { LocationItems } from '../components/offers/location-items';
+import { useState } from 'react';
 
 type MainPageProps = {
   offers: Offer[];
 };
 
 export const MainPage = ({ offers }: MainPageProps) => {
-  console.log('render MainPage');
+  const [currentCity, setCurrentCity] = useState('Paris');
+  // console.log(currentCity);
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -26,43 +30,24 @@ export const MainPage = ({ offers }: MainPageProps) => {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              {Cities.map((city) => (
+                <LocationItems
+                  key={city}
+                  city={city}
+                  currentCity={currentCity}
+                  onClick={setCurrentCity}
+                />
+              ))}
             </ul>
           </section>
         </div>
         {offers.length === 0 ? (
           <OffersListEmpty />
         ) : (
-          <OfferList offers={offers} />
+          <OfferList
+            offers={getCurrentCityOffers(offers, currentCity)}
+            currentCity={currentCity} // Эту переменную, полагаю, можно вытаскивать из массива offers?
+          />
         )}
       </main>
     </div>
