@@ -4,25 +4,30 @@ import { getRating, classIncluded, createOfferLink } from '../utils';
 
 type CardProps = {
   offer: Offer;
-  onHover: (offerId: string) => void;
+  onHover?: (offerId: string) => void;
+  favoriteCard?: boolean;
 };
 
-export const Card = ({ offer, onHover }: CardProps): JSX.Element => {
-  // console.log('render card');
-
+export const Card = ({
+  offer,
+  onHover,
+  favoriteCard,
+}: CardProps): JSX.Element => {
   const mouseOverHandler = () => {
-    onHover(offer.id);
+    if (onHover) {
+      onHover(offer.id);
+    }
     // console.log('MouseOver >>', offer.id);
   };
 
   const mouseOutHandler = () => {
     // console.log('mouse out');
-    onHover('');
+    onHover?.('');
   };
 
   return (
     <article
-      className="cities__card place-card"
+      className={`${favoriteCard ? 'favorites__card' : 'cities__card'}  place-card`}
       onMouseOver={mouseOverHandler}
       onMouseOut={mouseOutHandler}
     >
@@ -31,13 +36,23 @@ export const Card = ({ offer, onHover }: CardProps): JSX.Element => {
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div
+        // className={`${favoriteCard ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}
+        // cx()
+        className={classIncluded(
+          {
+            'favorites__image-wrapper': !!favoriteCard,
+            'cities__image-wrapper': !favoriteCard,
+          },
+          ['place-card__image-wrapper'],
+        )}
+      >
         <Link to={createOfferLink(offer.id)}>
           <img
             className="place-card__image"
             src={offer.previewImage}
-            width="260"
-            height="200"
+            width={`${favoriteCard ? '150' : '260'} `}
+            height={`${favoriteCard ? '110' : '200'} `}
             alt="Place image"
           />
         </Link>

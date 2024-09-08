@@ -1,4 +1,4 @@
-import { Offer } from '../types/Offer';
+import { City, Offer } from '../types/Offer';
 
 export const offers2: Offer[] = [];
 
@@ -643,7 +643,7 @@ export const offers: Offer[] = [
       longitude: 6.976974,
       zoom: 16,
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 4.5,
   },
@@ -2765,4 +2765,12 @@ export const offers: Offer[] = [
   },
 ];
 
+export const city: City = {
+  name: 'Paris',
+  location: {
+    latitude: 48.85661,
+    longitude: 2.351499,
+    zoom: 13,
+  },
+};
 // export const favoriteOffers = offers.filter();
