@@ -6,7 +6,7 @@ type LocationItemsProps = {
   onClick: (offerId: string) => void;
 };
 
-export const LocationItems = (props: LocationItemsProps): JSX.Element => {
+export const LocationItem = (props: LocationItemsProps): JSX.Element => {
   const { city, currentCity, onClick } = props;
 
   const cityClickhandler = () => {

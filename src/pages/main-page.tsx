@@ -4,7 +4,7 @@ import { Offer } from '../types/Offer';
 import { classIncluded, getCurrentCityOffers } from '../utils';
 import { Header } from '../components/header/header';
 import { Cities } from '../const';
-import { LocationItems } from '../components/offers/location-items';
+import { LocationItem } from '../components/offers/location-items';
 import { useState } from 'react';
 
 type MainPageProps = {
@@ -31,7 +31,7 @@ export const MainPage = ({ offers }: MainPageProps) => {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               {Cities.map((city) => (
-                <LocationItems
+                <LocationItem
                   key={city}
                   city={city}
                   currentCity={currentCity}

@@ -57,7 +57,14 @@ export const OfferList = ({
             ))}
           </div>
         </section>
-        <Map offers={offers} city={city} selectedOffer={offerId} />
+        <div className="cities__right-section">
+          <Map
+            offers={offers}
+            city={city}
+            selectedOffer={offerId}
+            className={'cities__map'}
+          />
+        </div>
       </div>
     </div>
   );

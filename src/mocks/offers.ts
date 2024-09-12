@@ -855,7 +855,7 @@ export const offers: Offer[] = [
     rating: 3,
   },
   {
-    id: '03c23ab2-ce1b-4783-b0e4-336c5d187f97',
+    id: '23071a72-5ef6-46ca-a789-73436749a404',
     title: 'Canal View Prinsengracht',
     type: 'house',
     price: 451,
