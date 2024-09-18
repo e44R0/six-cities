@@ -19,3 +19,18 @@ export const getCurrentCityOffers = (
   offers: Offer[],
   currentCity: string,
 ): Offer[] => offers.filter((offer) => offer.city.name === currentCity);
+
+export const getShortStringDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+  });
+  return formattedDate;
+};
+
+export const getShortDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const formattedDate = date.toISOString().split('T')[0];
+  return formattedDate;
+};

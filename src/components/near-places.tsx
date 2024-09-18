@@ -6,7 +6,6 @@ type NearPlacesPrors = {
 };
 
 export const NearPlaces = (props: NearPlacesPrors): JSX.Element => {
-  console.log('');
   const nearOffers = props.offers.slice(0, 3);
 
   return (

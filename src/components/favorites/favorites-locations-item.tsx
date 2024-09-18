@@ -11,8 +11,6 @@ export const FavoritesLocationItem = ({
   cityName,
   offers,
 }: FavoriteListItemsProps): JSX.Element => {
-  //   console.log(cityName, offers);
-
   const [offerId, setId] = useState('');
   console.log('hovered offer:', offerId);
 

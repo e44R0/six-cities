@@ -1,12 +1,9 @@
-export const OfferPhoto = (): JSX.Element => {
-  console.log('render photo');
-  return (
-    <div className="offer__image-wrapper">
-      <img
-        className="offer__image"
-        src="img/apartment-01.jpg"
-        alt="Photo studio"
-      />
-    </div>
-  );
+type OfferPhotoProps = {
+  imageSrc: string;
 };
+
+export const OfferPhoto = (props: OfferPhotoProps): JSX.Element => (
+  <div className="offer__image-wrapper">
+    <img className="offer__image" src={props.imageSrc} alt="Photo studio" />
+  </div>
+);

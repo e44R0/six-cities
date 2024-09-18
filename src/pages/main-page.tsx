@@ -13,7 +13,6 @@ type MainPageProps = {
 
 export const MainPage = ({ offers }: MainPageProps) => {
   const [currentCity, setCurrentCity] = useState('Paris');
-  // console.log(currentCity);
   return (
     <div className="page page--gray page--main">
       <Header />
