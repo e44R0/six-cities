@@ -60,6 +60,14 @@ export const Map = (props: mapProps): JSX.Element => {
         // marker.setIcon(defaultCustomIcon).addTo(markerLayer);
       });
 
+      map.setView(
+        {
+          lat: city.location.latitude,
+          lng: city.location.longitude,
+        },
+        city.location.zoom,
+      );
+
       return () => {
         map.removeLayer(markerLayer);
       };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Offer } from '../../types/Offer';
 import { Card } from '../card';
 import { Map } from '../map/map';
-import { city } from '../../mocks/offers';
+// import { city } from '../../mocks/offers';
 
 type CitiesProps = {
   offers: Offer[];
@@ -60,7 +60,7 @@ export const OfferList = ({
         <div className="cities__right-section">
           <Map
             offers={offers}
-            city={city}
+            city={offers[0].city}
             selectedOffer={offerId}
             className={'cities__map'}
           />
