@@ -2,29 +2,6 @@ import { City, Offer } from '../types/Offer';
 
 export const Offers: Offer[] = [
   {
-    id: '502872da-6cb4-4fee-ba4c-88506bcb0c2c',
-    title: 'The house among olive ',
-    type: 'apartment',
-    price: 111,
-    previewImage: 'https://13.design.htmlacademy.pro/static/hotel/1.jpg',
-    city: {
-      name: 'Paris',
-      location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13,
-      },
-    },
-    location: {
-      latitude: 48.868610000000004,
-      longitude: 2.342499,
-      zoom: 16,
-    },
-    isFavorite: true,
-    isPremium: true,
-    rating: 1.7,
-  },
-  {
     id: '481f4bf9-9b51-42e2-b164-d3c833f5d875',
     title: 'The Pondhouse - A Magical Place',
     type: 'apartment',

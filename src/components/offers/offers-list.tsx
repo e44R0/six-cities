@@ -1,21 +1,20 @@
 import { useState } from 'react';
-import { Offer } from '../../types/Offer';
+// import { Offer } from '../../types/Offer';
 import { Card } from '../card';
 import { Map } from '../map/map';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 // import { city } from '../../mocks/offers';
 
-type CitiesProps = {
-  offers: Offer[];
-  currentCity: string;
-};
-
-export const OfferList = ({
-  offers,
-  currentCity,
-}: CitiesProps): JSX.Element => {
-  // console.log('render offer list');
+export const OfferList = (): JSX.Element => {
   const [offerId, setId] = useState('');
+
+  const currentCity = useSelector((state: RootState) => state.currentCity);
+  const offers = useSelector((state: RootState) => state.offers);
+
   console.log('hovered offer:', offerId);
+
+  // if (offers.length === 0) return ...;
 
   return (
     <div className="cities">

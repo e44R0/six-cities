@@ -1,18 +1,19 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { classIncluded } from '../../utils';
+import { RootState } from '../../store/store';
+import { changeCity } from '../../store/action';
 
 type LocationItemsProps = {
   city: string;
-  currentCity: string;
-  onClick: (offerId: string) => void;
 };
 
 export const LocationItem = (props: LocationItemsProps): JSX.Element => {
-  const { city, currentCity, onClick } = props;
+  const { city } = props;
+  const currentCity = useSelector((state: RootState) => state.currentCity);
+  const dispatch = useDispatch();
 
   const cityClickhandler = () => {
-    if (onClick) {
-      onClick(city);
-    }
+    dispatch(changeCity(city));
   };
 
   return (
