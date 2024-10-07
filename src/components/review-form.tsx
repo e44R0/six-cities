@@ -12,7 +12,7 @@ export const ReviewForm = () => {
       {/* Вынести в отдельный компонент */}
       <div className="reviews__rating-form form__rating">
         <input
-          className="form__rating-input visuall-hidden"
+          className="form__rating-input visually-hidden"
           name="rating"
           value="5"
           id="5-stars"
@@ -31,7 +31,7 @@ export const ReviewForm = () => {
         </label>
 
         <input
-          className="form__rating-input visuall-hidden"
+          className="form__rating-input visually-hidden"
           name="rating"
           value="4"
           checked={rating === 4}
@@ -50,7 +50,7 @@ export const ReviewForm = () => {
         </label>
 
         <input
-          className="form__rating-input visuall-hidden"
+          className="form__rating-input visually-hidden"
           name="rating"
           value="3"
           checked={rating === 3}
@@ -69,7 +69,7 @@ export const ReviewForm = () => {
         </label>
 
         <input
-          className="form__rating-input visuall-hidden"
+          className="form__rating-input visually-hidden"
           name="rating"
           value="2"
           checked={rating === 2}
@@ -88,7 +88,7 @@ export const ReviewForm = () => {
         </label>
 
         <input
-          className="form__rating-input visuall-hidden"
+          className="form__rating-input visually-hidden"
           name="rating"
           value="1"
           checked={rating === 1}

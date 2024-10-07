@@ -17,11 +17,9 @@ export const Card = ({
     if (onHover) {
       onHover(offer.id);
     }
-    // console.log('MouseOver >>', offer.id);
   };
 
   const mouseOutHandler = () => {
-    // console.log('mouse out');
     onHover?.('');
   };
 
@@ -37,8 +35,6 @@ export const Card = ({
         </div>
       )}
       <div
-        // className={`${favoriteCard ? 'favorites__image-wrapper' : 'cities__image-wrapper'} place-card__image-wrapper`}
-        // cx()
         className={classIncluded(
           {
             'favorites__image-wrapper': !!favoriteCard,
