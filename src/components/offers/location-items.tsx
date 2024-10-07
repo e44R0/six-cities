@@ -12,7 +12,7 @@ export const LocationItem = (props: LocationItemsProps): JSX.Element => {
   const currentCity = useSelector((state: RootState) => state.currentCity);
   const dispatch = useDispatch();
 
-  const cityClickhandler = () => {
+  const cityClickHandler = () => {
     dispatch(changeCity(city));
   };
 
@@ -25,7 +25,7 @@ export const LocationItem = (props: LocationItemsProps): JSX.Element => {
           'tabs__item': true,
           'tabs__item--active': city === currentCity,
         })}
-        onClick={cityClickhandler}
+        onClick={cityClickHandler}
       >
         <span>{city}</span>
       </a>

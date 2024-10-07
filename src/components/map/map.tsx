@@ -72,7 +72,14 @@ export const Map = (props: mapProps): JSX.Element => {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, cityOffers, selectedOffer]);
+  }, [
+    map,
+    cityOffers,
+    selectedOffer,
+    city.location.latitude,
+    city.location.longitude,
+    city.location.zoom,
+  ]);
 
   return <section className={`${className} map`} ref={mapRef}></section>;
 };

@@ -30,5 +30,11 @@ export const Cities = [
   'Amsterdam',
   'Hamburg',
   'Dusseldorf',
-  'Kondrovo',
+];
+
+export const Filters = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first',
 ];

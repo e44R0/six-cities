@@ -1,4 +1,3 @@
-import { OffersListEmpty } from '../components/offers/offers-list-empty';
 import { OfferList } from '../components/offers/offers-list';
 import { Offer } from '../types/Offer';
 import { classIncluded } from '../utils';
@@ -33,7 +32,7 @@ export const MainPage = ({ offers }: MainPageProps) => (
           </ul>
         </section>
       </div>
-      {offers.length === 0 ? <OffersListEmpty /> : <OfferList />}
+      <OfferList />
     </main>
   </div>
 );
