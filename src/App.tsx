@@ -11,7 +11,7 @@ import { AppRoute, Settings } from './const';
 export const App = (): JSX.Element => (
   <BrowserRouter>
     <Routes>
-      <Route path={AppRoute.Root} element={<MainPage offers={Offers} />} />
+      <Route path={AppRoute.Root} element={<MainPage />} />
       <Route
         path={AppRoute.Favorites}
         element={
