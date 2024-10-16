@@ -38,3 +38,9 @@ export const Filters = [
   'Price: high to low',
   'Top rated first',
 ];
+
+export enum APIRoute {
+  Offers = '/offers',
+  Login = '/login',
+  Logout = '/logout',
+}

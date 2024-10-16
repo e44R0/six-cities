@@ -34,3 +34,22 @@ export const getShortDate = (dateStr: string) => {
   const formattedDate = date.toISOString().split('T')[0];
   return formattedDate;
 };
+
+export const getSortOffers = (arr: Offer[] = [], sortType: string) => {
+  switch (sortType) {
+    case 'Popular':
+      return arr;
+
+    case 'Price: low to high':
+      return arr.sort((a, b) => a.price - b.price);
+
+    case 'Price: high to low':
+      return arr.sort((a, b) => b.price - a.price);
+
+    case 'Top rated first':
+      return arr.sort((a, b) => b.rating - a.rating);
+
+    default:
+      return arr;
+  }
+};

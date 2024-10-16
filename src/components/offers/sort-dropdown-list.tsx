@@ -4,8 +4,7 @@ import { RootState } from '../../store/store';
 import { changeSortingType } from '../../store/action';
 
 type SortListProps = {
-  onClick: (isVisible: boolean) => void;
-  sortListVisible: boolean;
+  onClick: () => void;
   filtersItem: string;
 };
 
@@ -15,7 +14,7 @@ export const SortList = (props: SortListProps): JSX.Element => {
 
   const sortingTypeClickHandler = () => {
     dispatch(changeSortingType(props.filtersItem));
-    props.onClick(!props.sortListVisible);
+    props.onClick();
   };
 
   return (
