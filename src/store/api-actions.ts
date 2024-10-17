@@ -2,8 +2,8 @@ import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store';
 import { Offer } from '../types/Offer';
-import { loadOffers } from './action';
-// import { loadOffers, setQuestionsDataLoadingStatus } from './action';
+import { changeDataLoadingStatus, loadOffers } from './action';
+// import { loadOffers, changeDataLoadingStatus } from './action';
 // import {saveToken, dropToken} from '../services/token';
 import { APIRoute } from '../const';
 // import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
@@ -20,8 +20,8 @@ export const fetchOffersAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('data/fetchOffers', async (_arg, { dispatch, extra: api }) => {
-  //   dispatch(setQuestionsDataLoadingStatus(true));
+  dispatch(changeDataLoadingStatus(true));
   const { data } = await api.get<Offer[]>(APIRoute.Offers);
-  //   dispatch(setQuestionsDataLoadingStatus(false));
+  dispatch(changeDataLoadingStatus(false));
   dispatch(loadOffers(data));
 });

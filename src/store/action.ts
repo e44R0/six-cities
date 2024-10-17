@@ -11,3 +11,7 @@ export const changeSortingType = createAction(
 );
 
 export const loadOffers = createAction<Offer[]>('data/loadOffers');
+
+export const changeDataLoadingStatus = createAction<boolean>(
+  'changeDataLoadingStatus',
+);
