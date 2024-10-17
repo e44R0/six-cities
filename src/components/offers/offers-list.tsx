@@ -6,6 +6,7 @@ import { RootState } from '../../store/store';
 import { OffersListEmpty } from './offers-list-empty';
 import { SortingDropdown } from './sort-dropdown';
 import { getCurrentCityOffers, getSortOffers } from '../../utils';
+import { LoadSpinner } from '../load-spinner';
 
 export const OfferList = (): JSX.Element => {
   const [offerId, setId] = useState('');
@@ -13,9 +14,14 @@ export const OfferList = (): JSX.Element => {
   const currentCity = useSelector((state: RootState) => state.currentCity);
   const offers = useSelector((state: RootState) => state.offers);
   const sortType = useSelector((state: RootState) => state.sortingType);
+  const loadingStatus = useSelector((state: RootState) => state.loadingStatus);
   const filtredOffers = getCurrentCityOffers(offers, currentCity);
   // const { offers, currentCity, ... }= useSelector((state) => state);
   console.log('hovered offer:', offerId);
+
+  if (loadingStatus) {
+    return <LoadSpinner />;
+  }
 
   if (offers.length === 0) {
     return <OffersListEmpty />;
