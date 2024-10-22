@@ -4,14 +4,17 @@ import {
   changeDataLoadingStatus,
   changeSortingType,
   loadOffers,
+  requireAuthorization,
 } from './action';
 import { Offer } from '../types/Offer';
+import { AuthorizationStatus } from '../const';
 
 const initialState = {
   currentCity: 'Paris',
   offers: [] as Offer[],
   sortingType: 'Popular',
   loadingStatus: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 export const rootReducer = createReducer(initialState, (builder) => {
@@ -27,6 +30,9 @@ export const rootReducer = createReducer(initialState, (builder) => {
     })
     .addCase(changeDataLoadingStatus, (state, action) => {
       state.loadingStatus = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 

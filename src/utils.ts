@@ -1,4 +1,7 @@
 import { Offer } from './types/Offer';
+import { createBrowserHistory } from 'history';
+
+export const browserHistory = createBrowserHistory();
 
 export const classIncluded = (
   classNames: { [key: string]: boolean },
