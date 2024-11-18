@@ -3,14 +3,11 @@ import { FavoritesEmpty } from '../components/favorites/favorites-empty';
 import { Footer } from '../components/footer/footer';
 import { Settings } from '../const';
 import { Header } from '../components/header/header';
-import { Offer } from '../types/Offer';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
-type FavoritePageProps = {
-  offers: Offer[];
-};
-
-export const FavoritesPage = ({ offers }: FavoritePageProps): JSX.Element => {
-  console.log('render Favorites');
+export const FavoritesPage = (): JSX.Element => {
+  const offers = useSelector((state: RootState) => state.offers);
   return (
     <div className="page">
       <Header />

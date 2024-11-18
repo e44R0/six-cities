@@ -41,6 +41,7 @@ export const Filters = [
 
 export enum APIRoute {
   Offers = '/offers',
+  Offer = 'offers/{offerId}',
   Login = '/login',
   Logout = '/logout',
 }

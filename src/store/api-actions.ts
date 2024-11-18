@@ -1,20 +1,18 @@
 import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store';
-import { Offer } from '../types/Offer';
+import { FullOffer, Offer } from '../types/Offer';
 import {
   changeDataLoadingStatus,
+  loadOffer,
   loadOffers,
+  loadOfferError,
   requireAuthorization,
 } from './action';
-// import { loadOffers, changeDataLoadingStatus } from './action';
-// import {saveToken, dropToken} from '../services/token';
 import { APIRoute, AuthorizationStatus } from '../const';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
-// import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
-// import {store} from './';
 
 export const fetchOffersAction = createAsyncThunk<
   void,
@@ -80,4 +78,25 @@ export const logoutAction = createAsyncThunk<
   await api.delete(APIRoute.Logout);
   dropToken();
   dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+});
+
+export const fetchFullOfferAction = createAsyncThunk<
+  void,
+  string,
+  {
+    dispatch: AppDispatch;
+    state: RootState;
+    extra: AxiosInstance;
+  }
+>('data/fetchFullOffer', async (id, { dispatch, extra: api }) => {
+  dispatch(changeDataLoadingStatus(true));
+
+  try {
+    const { data } = await api.get<FullOffer>(`${APIRoute.Offers}/${id}`);
+    dispatch(loadOffer(data));
+  } catch (error) {
+    dispatch(loadOfferError(error as Error));
+  } finally {
+    dispatch(changeDataLoadingStatus(false));
+  }
 });

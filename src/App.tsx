@@ -5,7 +5,7 @@ import { LoginPage } from './pages/login';
 import { NotFoundPage } from './pages/page-not-found';
 import { FavoritesPage } from './pages/favorites';
 import { PrivateRoute } from './components/private-route';
-import { Offers } from './mocks/offers';
+// import { Offers } from './mocks/offers';
 import { AppRoute } from './const';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
@@ -24,7 +24,7 @@ export const App = (): JSX.Element => {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute authorizationStatus={authorizationStatus}>
-              <FavoritesPage offers={Offers} />
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
