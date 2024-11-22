@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { FullOffer, Offer } from '../types/Offer';
+import { FullOffer, Offer, Comment } from '../types/Offer';
 import { AuthorizationStatus } from '../const';
 
 export const changeCity = createAction('changeCity', (city: string) => ({
@@ -24,3 +24,7 @@ export const requireAuthorization = createAction<AuthorizationStatus>(
 );
 
 export const loadOffer = createAction<FullOffer>('data/loadOffer');
+
+export const loadNearbyOffers = createAction<Offer[]>('data/loadNearbyOffers');
+
+export const loadComments = createAction<Comment[]>('data/loadComments');

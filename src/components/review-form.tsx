@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/store';
+import { useParams } from 'react-router-dom';
+import { sendCommentAction } from '../store/api-actions';
 
 export const ReviewForm = () => {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
+  const params = useParams();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    debugger;
+    dispatch(sendCommentAction({ offerId: params.id!, comment, rating }));
+  };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={submitHandler}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>

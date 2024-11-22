@@ -1,13 +1,12 @@
 import { Header } from '../components/header/header';
 import { OfferPhoto } from '../components/offers/offer-photo';
 import { NearPlaces } from '../components/near-places';
-import { city, Offers } from '../mocks/offers';
+import { city } from '../mocks/offers';
 import { Map } from '../components/map/map';
 // import { Offer } from '../mocks/offer';
 import { GoodsListItem } from '../components/offers/features-list-item';
 import { classIncluded, getRating } from '../utils';
 import { OfferReviews } from '../components/offers/offer-reviews';
-import { Comments } from '../mocks/comments';
 import { useParams } from 'react-router-dom';
 import { RootState, store } from '../store/store';
 import { fetchFullOfferAction } from '../store/api-actions';
@@ -29,6 +28,8 @@ export const OfferPage = (): JSX.Element => {
   const loadOfferError = useSelector(
     (state: RootState) => state.loadOfferError,
   );
+  const nearbyOffers = useSelector((state: RootState) => state.nearbyOffers);
+  const Comments = useSelector((state: RootState) => state.comments);
 
   const offer = useSelector((state: RootState) => state.fulloffer);
   console.log('fulloffer:', offer);
@@ -141,14 +142,14 @@ export const OfferPage = (): JSX.Element => {
             </div>
           </div>
           <Map
-            offers={[...Offers.slice(1, 4), offer]}
+            offers={[...nearbyOffers.slice(1, 4), offer]}
             city={city}
             selectedOffer={offer.id}
             className={'offer__map'}
           />
         </section>
         <div className="container">
-          <NearPlaces offers={Offers} />
+          <NearPlaces offers={nearbyOffers} />
         </div>
       </main>
     </div>
