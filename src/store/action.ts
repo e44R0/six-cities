@@ -28,3 +28,5 @@ export const loadOffer = createAction<FullOffer>('data/loadOffer');
 export const loadNearbyOffers = createAction<Offer[]>('data/loadNearbyOffers');
 
 export const loadComments = createAction<Comment[]>('data/loadComments');
+
+export const addNewComment = createAction<Comment>('data/addNewComment');

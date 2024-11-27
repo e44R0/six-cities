@@ -12,8 +12,6 @@ export const ReviewForm = () => {
 
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    debugger;
     dispatch(sendCommentAction({ offerId: params.id!, comment, rating }));
   };
 

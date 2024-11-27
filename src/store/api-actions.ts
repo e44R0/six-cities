@@ -10,6 +10,7 @@ import {
   requireAuthorization,
   loadNearbyOffers,
   loadComments,
+  addNewComment,
 } from './action';
 import { APIRoute, AuthorizationStatus } from '../const';
 import { AuthData } from '../types/auth-data';
@@ -123,6 +124,8 @@ export const sendCommentAction = createAsyncThunk<
       rating,
     });
     console.log('comment:', data);
-    //dispatch(addNewComment(data));
+    if (data) {
+      dispatch(addNewComment(data as Comment));
+    }
   },
 );

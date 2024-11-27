@@ -9,6 +9,7 @@ import {
   loadOffers,
   requireAuthorization,
   loadComments,
+  addNewComment,
 } from './action';
 import { FullOffer, Offer, Comment } from '../types/Offer';
 import { AuthorizationStatus } from '../const';
@@ -41,6 +42,9 @@ export const rootReducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadNearbyOffers, (state, action) => {
       state.nearbyOffers = action.payload;
+    })
+    .addCase(addNewComment, (state, action) => {
+      state.comments.push(action.payload);
     })
     .addCase(loadComments, (state, action) => {
       state.comments = action.payload;
