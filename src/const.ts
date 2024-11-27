@@ -39,8 +39,21 @@ export const Filters = [
   'Top rated first',
 ];
 
-export enum APIRoute {
-  Offers = '/offers',
-  Login = '/login',
-  Logout = '/logout',
-}
+// export enum APIRoute {
+//   Offers = '/offers',
+//   Offer = 'offers/{offerId}',
+//   Login = '/login',
+//   Logout = '/logout',
+//   Nearby = '/offers/{offerId}/nearby',
+// }
+
+export const APIRoute = {
+  Offers: () => '/offers',
+  Offer: (id: string) => `offers/${id}`,
+  Login: () => '/login',
+  Logout: () => '/logout',
+  Nearby: (id: string) => `/offers/${id}/nearby`,
+  Comments: (id: string) => `/comments/${id}`,
+};
+
+// /six-cities/offers/{offerId}/nearby
