@@ -3,8 +3,10 @@ import { SortList } from './sort-dropdown-list';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { Filters } from '../../const';
+import { memo } from 'react';
 
-export const SortingDropdown = (): JSX.Element => {
+export const SortingDropdown = memo((): JSX.Element => {
+  console.log('render SortingDropdown');
   const [sortListVisible, setSortListVisible] = useState(false);
   const sortingType = useSelector((state: RootState) => state.sortingType);
 
@@ -37,4 +39,6 @@ export const SortingDropdown = (): JSX.Element => {
       </ul>
     </form>
   );
-};
+});
+
+SortingDropdown.displayName = 'SortingDropdown';

@@ -8,6 +8,7 @@ import { RootState } from '../store/store';
 
 export const MainPage = () => {
   const offers = useSelector((state: RootState) => state.offers);
+  console.log('render MainPage');
   return (
     <div className="page page--gray page--main">
       <Header />
