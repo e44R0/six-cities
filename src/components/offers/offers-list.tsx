@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Card } from '../card';
 import { Map } from '../map/map';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,17 @@ import { OffersListEmpty } from './offers-list-empty';
 import { SortingDropdown } from './sort-dropdown';
 import { getCurrentCityOffers, getSortOffers } from '../../utils';
 import { LoadSpinner } from '../load-spinner';
+
+const OffersCount = memo(() => {
+  console.log('render OffersCount');
+  const currentCity = useSelector((state: RootState) => state.currentCity);
+  const offers = useSelector((state: RootState) => state.offers);
+  const filtredOffers = getCurrentCityOffers(offers, currentCity);
+
+  return <span>{filtredOffers.length}</span>;
+});
+
+OffersCount.displayName = 'OffersCount';
 
 export const OfferList = (): JSX.Element => {
   const [offerId, setId] = useState('');
@@ -17,7 +28,8 @@ export const OfferList = (): JSX.Element => {
   const loadingStatus = useSelector((state: RootState) => state.loadingStatus);
   const filtredOffers = getCurrentCityOffers(offers, currentCity);
   // const { offers, currentCity, ... }= useSelector((state) => state);
-  console.log('hovered offer:', offerId);
+  // console.log('hovered offer:', offerId);
+  console.log('render OfferList');
 
   if (loadingStatus) {
     return <LoadSpinner />;
@@ -33,7 +45,7 @@ export const OfferList = (): JSX.Element => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">
-            {filtredOffers.length} places to stay in {currentCity}
+            <OffersCount /> places to stay in {currentCity}
           </b>
           <SortingDropdown />
           <div className="cities__places-list places__list tabs__content">

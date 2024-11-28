@@ -16,6 +16,7 @@ export const App = (): JSX.Element => {
   const authorizationStatus = useSelector(
     (state: RootState) => state.authorizationStatus,
   );
+
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
