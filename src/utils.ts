@@ -56,3 +56,6 @@ export const getSortOffers = (arr: Offer[] = [], sortType: string) => {
       return arr;
   }
 };
+
+export const getCountFavoriteOffers = (offers: Offer[]) =>
+  offers.filter((offer) => offer.isFavorite).length;

@@ -54,6 +54,7 @@ export const APIRoute = {
   Logout: () => '/logout',
   Nearby: (id: string) => `/offers/${id}/nearby`,
   Comments: (id: string) => `/comments/${id}`,
+  UdateFavorite: (id: string, status: 0 | 1) => `/favorite/${id}/${status}`,
 };
 
 // /six-cities/offers/{offerId}/nearby

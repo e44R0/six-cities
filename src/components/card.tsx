@@ -2,6 +2,9 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Offer } from '../types/Offer';
 import { getRating, classIncluded, createOfferLink } from '../utils';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/store';
+import { updateFavorite } from '../store/api-actions';
 
 type CardProps = {
   offer: Offer;
@@ -12,10 +15,21 @@ type CardProps = {
 export const Card = memo(
   ({ offer, onHover, favoriteCard }: CardProps): JSX.Element => {
     console.log('render Card:', offer.id);
+    const dispatch = useDispatch<AppDispatch>();
+
     const mouseOverHandler = () => {
       if (onHover) {
         onHover(offer.id);
       }
+    };
+
+    const favoriteButtonHandler = () => {
+      dispatch(
+        updateFavorite({
+          offerId: offer.id,
+          status: offer.isFavorite ? 0 : 1,
+        }),
+      );
     };
 
     const mouseOutHandler = () => {
@@ -65,6 +79,7 @@ export const Card = memo(
                 'place-card__bookmark-button--active': offer.isFavorite,
               })}
               type="button"
+              onClick={favoriteButtonHandler}
             >
               <svg className="place-card__bookmark-icon" width="18" height="19">
                 <use xlinkHref="#icon-bookmark"></use>
