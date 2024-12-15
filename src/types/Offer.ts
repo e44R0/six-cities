@@ -74,3 +74,8 @@ export type CommentData = {
   comment: string;
   rating: number;
 };
+
+export type FavoritePatch = {
+  offerId: string;
+  status: 0 | 1;
+};

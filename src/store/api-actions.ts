@@ -1,7 +1,13 @@
 import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store';
-import { FullOffer, Offer, Comment, CommentData } from '../types/Offer';
+import {
+  FullOffer,
+  Offer,
+  Comment,
+  CommentData,
+  FavoritePatch,
+} from '../types/Offer';
 import {
   changeDataLoadingStatus,
   loadOffer,
@@ -11,6 +17,8 @@ import {
   loadNearbyOffers,
   loadComments,
   addNewComment,
+  setFavorite,
+  getUserInfo,
 } from './action';
 import { APIRoute, AuthorizationStatus } from '../const';
 import { AuthData } from '../types/auth-data';
@@ -61,9 +69,10 @@ export const loginAction = createAsyncThunk<
   'user/login',
   async ({ login: email, password }, { dispatch, extra: api }) => {
     const {
-      data: { token },
+      data: { name, avatarUrl, isPro, email: userEmail, token },
     } = await api.post<UserData>(APIRoute.Login(), { email, password });
     saveToken(token);
+    dispatch(getUserInfo({ name, avatarUrl, isPro, email: userEmail, token }));
     dispatch(requireAuthorization(AuthorizationStatus.Auth));
     // dispatch(redirectToRoute(AppRoute.Result));
   },
@@ -117,7 +126,7 @@ export const sendCommentAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >(
-  'user/login',
+  'data/sendComment',
   async ({ offerId, comment, rating }, { dispatch, extra: api }) => {
     const { data } = await api.post<unknown>(APIRoute.Comments(offerId), {
       comment,
@@ -126,6 +135,27 @@ export const sendCommentAction = createAsyncThunk<
     console.log('comment:', data);
     if (data) {
       dispatch(addNewComment(data as Comment));
+    }
+  },
+);
+
+export const updateFavorite = createAsyncThunk<
+  void,
+  FavoritePatch,
+  {
+    dispatch: AppDispatch;
+    state: RootState;
+    extra: AxiosInstance;
+  }
+>(
+  'data/updateFavorite',
+  async ({ offerId, status }, { dispatch, extra: api }) => {
+    const { data } = await api.post<Offer>(
+      APIRoute.UdateFavorite(offerId, status),
+    );
+    console.log('offer:', data);
+    if (data) {
+      dispatch(setFavorite(data));
     }
   },
 );
