@@ -6,6 +6,9 @@ import { logoutAction } from '../../store/api-actions';
 
 export const HeaderNavigationAuthorized = (): JSX.Element => {
   const userEmail = useSelector((state: RootState) => state.userInfo.email);
+  const userAvatar = useSelector(
+    (state: RootState) => state.userInfo.avatarUrl,
+  );
   const offers = useSelector((state: RootState) => state.offers);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +24,9 @@ export const HeaderNavigationAuthorized = (): JSX.Element => {
             className="header__nav-link header__nav-link--profile"
             to="/favorites"
           >
-            <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+            <div className="header__avatar-wrapper user__avatar-wrapper">
+              <img src={userAvatar} alt="avatar" />
+            </div>
             <span className="header__user-name user__name">{userEmail}</span>
             <span className="header__favorite-count">
               {getCountFavoriteOffers(offers)}

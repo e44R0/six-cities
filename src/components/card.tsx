@@ -14,7 +14,7 @@ type CardProps = {
 
 export const Card = memo(
   ({ offer, onHover, favoriteCard }: CardProps): JSX.Element => {
-    console.log('render Card:', offer.id);
+    // console.log('render Card:', offer.id);
     const dispatch = useDispatch<AppDispatch>();
 
     const mouseOverHandler = () => {
