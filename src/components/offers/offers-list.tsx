@@ -24,9 +24,14 @@ export const OfferList = (): JSX.Element => {
 
   const currentCity = useSelector((state: RootState) => state.currentCity);
   const offers = useSelector((state: RootState) => state.offers);
+  // const offerIds = useSelector((state: RootState) =>
+  //   state.offers.map((offer) => offer.id),
+  // );
   const sortType = useSelector((state: RootState) => state.sortingType);
   const loadingStatus = useSelector((state: RootState) => state.loadingStatus);
   const filtredOffers = getCurrentCityOffers(offers, currentCity);
+  // const { offers, currentCity, ... }= useSelector((state) => state);
+  // console.log('hovered offer:', offerId);
   console.log('render OfferList');
 
   if (loadingStatus) {
